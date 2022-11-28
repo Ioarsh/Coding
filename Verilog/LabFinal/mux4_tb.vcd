@@ -1,0 +1,207 @@
+$date
+	Wed Nov 02 00:26:43 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module mux4_tb $end
+$var wire 4 ! out [3:0] $end
+$var reg 4 " in0 [3:0] $end
+$var reg 4 # in1 [3:0] $end
+$var reg 4 $ in2 [3:0] $end
+$var reg 4 % in3 [3:0] $end
+$var reg 2 & s [1:0] $end
+$scope module mymux4 $end
+$var wire 4 ' d0 [3:0] $end
+$var wire 4 ( d1 [3:0] $end
+$var wire 4 ) d2 [3:0] $end
+$var wire 4 * d3 [3:0] $end
+$var wire 2 + s [1:0] $end
+$var wire 4 , y [3:0] $end
+$var wire 4 - lowmux_out [3:0] $end
+$var wire 4 . highmux_out [3:0] $end
+$scope module finalmux $end
+$var wire 1 / s $end
+$var wire 4 0 y [3:0] $end
+$var wire 4 1 d1 [3:0] $end
+$var wire 4 2 d0 [3:0] $end
+$upscope $end
+$scope module highmux $end
+$var wire 4 3 d0 [3:0] $end
+$var wire 4 4 d1 [3:0] $end
+$var wire 1 5 s $end
+$var wire 4 6 y [3:0] $end
+$upscope $end
+$scope module lowmux $end
+$var wire 4 7 d0 [3:0] $end
+$var wire 4 8 d1 [3:0] $end
+$var wire 1 9 s $end
+$var wire 4 : y [3:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx :
+x9
+bx 8
+bx 7
+bx 6
+x5
+bx 4
+bx 3
+bx 2
+bx 1
+bx 0
+x/
+bx .
+bx -
+bx ,
+bx +
+bx *
+bx )
+bx (
+bx '
+bx &
+bx %
+bx $
+bx #
+bx "
+bx !
+$end
+#1
+b10 !
+b10 ,
+b10 0
+b110 .
+b110 1
+b110 6
+b10 -
+b10 2
+b10 :
+09
+05
+0/
+b1001 %
+b1001 *
+b1001 4
+b110 $
+b110 )
+b110 3
+b100 #
+b100 (
+b100 8
+b10 "
+b10 '
+b10 7
+b0 &
+b0 +
+#2
+b100 !
+b100 ,
+b100 0
+b100 -
+b100 2
+b100 :
+b1001 .
+b1001 1
+b1001 6
+19
+15
+b1 &
+b1 +
+#3
+b10 -
+b10 2
+b10 :
+b110 .
+b110 1
+b110 6
+b110 !
+b110 ,
+b110 0
+09
+05
+1/
+b10 &
+b10 +
+#4
+b1001 !
+b1001 ,
+b1001 0
+b100 -
+b100 2
+b100 :
+b1001 .
+b1001 1
+b1001 6
+19
+15
+b11 &
+b11 +
+#5
+b10 -
+b10 2
+b10 :
+b110 .
+b110 1
+b110 6
+b10 !
+b10 ,
+b10 0
+09
+05
+0/
+b0 &
+b0 +
+#6
+b100 !
+b100 ,
+b100 0
+b100 -
+b100 2
+b100 :
+b1001 .
+b1001 1
+b1001 6
+19
+15
+b1 &
+b1 +
+#7
+b10 -
+b10 2
+b10 :
+b110 .
+b110 1
+b110 6
+b110 !
+b110 ,
+b110 0
+09
+05
+1/
+b10 &
+b10 +
+#8
+b1001 !
+b1001 ,
+b1001 0
+b100 -
+b100 2
+b100 :
+b1001 .
+b1001 1
+b1001 6
+19
+15
+b11 &
+b11 +
+#10

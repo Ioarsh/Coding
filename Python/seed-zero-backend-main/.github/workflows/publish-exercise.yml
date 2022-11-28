@@ -1,0 +1,58 @@
+name: Deployment
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  GCP_PROJECT_ID: seed-zero
+  GCP_SERVICE_ACCOUNT: githubdeploy@seed-zero.iam.gserviceaccount.com
+  GCP_SA_KEY: publish.json
+  SERVICE_NAME: ${{ github.event.pull_request.head.ref }}
+  SERVICE_REGION: asia-southeast1
+
+jobs:
+  deploy-exercise:
+    name: Deploy to Cloud Run (Exercise)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: $GCP_PROJECT_ID
+          service_account_key: $GCP_SA_KEY
+          export_default_credentials: true
+      - name: Use gcloud CLI
+        run: |
+          gcloud run deploy $SERVICE_NAME \
+          --quiet \
+          --set-env-vars="NAME=${{ github.event.pull_request.title }}" \
+          --region $SERVICE_REGION \
+          --source . \
+          --project $GCP_PROJECT_ID \
+          --labels "commit-sha=${{ github.sha }}" \
+          --service-account $GCP_SERVICE_ACCOUNT
+      - name: Config policy to allow unauthenticated
+        run: |
+          gcloud run services add-iam-policy-binding $SERVICE_NAME \
+          --quiet \
+          --region $SERVICE_REGION \
+          --member="allUsers" \
+          --role="roles/run.invoker"
+      - name: Get Service URL
+        id: service-url
+        run: |
+          echo "::set-output name=url::$(gcloud run services describe $BETA_SERVICE_NAME --region $BETA_SERVICE_REGION --format 'value(status.url)')"
+      - name: Notify update in PR
+        uses: thollander/actions-comment-pull-request@v1
+        if: success() && github.event.action == 'opened'
+        with:
+          message: |
+            This exercise is already in the server
+            URL: ${{ steps.service-url.outputs.url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

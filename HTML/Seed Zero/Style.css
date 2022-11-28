@@ -1,0 +1,19 @@
+h1{
+    color: rgb(71, 126, 189);
+    color: rgb(161, 47, 19);
+    color:rgb(71, 189, 95);
+    background-color: rgb(90,2,99);
+    font-weight: bold;
+}
+p{
+    color: rgb(161, 47, 19)
+}
+li{
+    font-size: 50px;
+}
+.open{
+    font-size: 20px;
+}
+#llo{
+    font-size: 100px;
+}
