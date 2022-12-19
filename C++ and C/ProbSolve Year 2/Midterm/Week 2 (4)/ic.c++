@@ -20,16 +20,12 @@ int main(){
             x.push_back(num);
         }
         else if((command.compare("lr"))==0){
-            list<int>::iterator begin = x.begin();
-            x.push_back(*begin);
-            x.erase(begin);
+            x.push_back(x.front());
+            x.pop_front();
         }
         else if((command.compare("rr"))==0){
-            list<int>::iterator e = x.end();
-            e--;
-            int end = x.back();
-            x.push_front(end);
-            x.erase(e);
+            x.push_front(x.back());
+            x.pop_back();
         }
     }
     for(list<int>::iterator itr = x.begin(); itr != x.end(); itr++){
