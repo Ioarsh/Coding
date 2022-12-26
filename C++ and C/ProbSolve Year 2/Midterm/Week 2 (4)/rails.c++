@@ -1,6 +1,5 @@
 #include<iostream>
 #include<list>
-#include<stack>
 using namespace std;
 int main(){
     list<string> ans;
@@ -23,11 +22,11 @@ int main(){
                 x.push_back(coashes);
             }
             int can=1;
-            stack<int> s;
+            list<int> s;
             for(int i =0;i<n;i++){
-                s.push(i+1);
-                while(!s.empty() && s.top()==x.front()){
-                    s.pop();
+                s.push_front(i+1);
+                while(!s.empty() && s.front()==x.front()){
+                    s.pop_front();
                     x.pop_front();
                 }
             }
