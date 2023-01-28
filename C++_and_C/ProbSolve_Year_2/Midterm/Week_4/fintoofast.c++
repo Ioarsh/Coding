@@ -58,13 +58,14 @@ int dijkstra_onlyfirst()
         int u = pq.top()[0];
         int u_weight = pq.top()[1];
         pq.pop();
-        if(visited_Bridge[u] && visited_noBridge[u]){
-            continue;
-        }
         if (u_express==1){
+            if(visited_Bridge[u])
+                continue;
             visited_Bridge[u] = true;
         }
         else{
+            if(visited_noBridge[u])
+                continue;
             visited_noBridge[u] = true;
         }
         for(auto i :adj[u]){
@@ -95,17 +96,10 @@ int dijkstra_onlyfirst()
             cout << "------------------------------------------\n";
         }
     }
-    return min(dist_Bridge[n-1],dist_noBridge[n-1]);
-}
-
-void print_check(){
-    cout << "-------------------\n";
-    for(int i=0;i<n;i++){
-        for(int j=0;j<deg[i];j++){
-            cout << adj[i][j][0] << " " << adj[i][j][1] << " " << adj[i][j][2] << '\n';
-        }
-        cout << "-------------------\n";
+    if (min(dist_Bridge[n-1],dist_noBridge[n-1])!=MAX_N){
+        return min(dist_Bridge[n-1],dist_noBridge[n-1]);
     }
+    else return -1;
 }
 
 int main(){
