@@ -66,10 +66,10 @@ bool check(vector<int> adj[],int start){
             if(seen[v] && layer[u]==layer[v]){
                 return false;
             }
-            if(!seen[v]) {
+            if(!seen[v] && layer[v]==-1) {
 	            Q.push_back(v);
 	            seen[v] = true;
-	            layer[v] = layer[u] + 1;
+	            layer[v] = 1- layer[u];
             }
         }
     }
