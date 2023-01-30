@@ -70,21 +70,21 @@ int dijkstra_onlyfirst()
         for(auto i :adj[u]){
             // Bridge->NoBridge
             if(u_bridge==1 && i[2]==0){
-                if(visited_Bridge[i[0]]==false && dist_Bridge[i[0]]>dist_Bridge[u]+i[1]){
+                if(visited_Bridge[i[0]]==false && dist_Bridge[i[0]]>dist_Bridge[u]+i[0]){
                     dist_Bridge[i[0]]=dist_Bridge[u]+i[1];
                     pq.push({i[0],dist_Bridge[i[0]],1});
                 }
             }
             // NoBridge->NoBridge
             else if(u_bridge==0 && i[2]==0){
-                if(visited_noBridge[i[0]]==false && dist_noBridge[i[0]]>dist_noBridge[u]+i[1]){
+                if(visited_noBridge[i[0]]==false && dist_noBridge[i[0]]>dist_noBridge[u]+i[0]){
                     dist_noBridge[i[0]]=dist_noBridge[u]+i[1];
                     pq.push({i[0],dist_noBridge[i[0]],0});
                 }
             }
             // NoBridge->Bridge
             else if(u_bridge==0 && i[2]==1){
-                if(visited_Bridge[i[0]]==false && dist_Bridge[i[0]]>dist_noBridge[u]+i[1]){
+                if(visited_Bridge[i[0]]==false && dist_Bridge[i[0]]>dist_Bridge[u]+i[0]){
                     dist_Bridge[i[0]]=dist_noBridge[u]+i[1];
                     pq.push({i[0],dist_Bridge[i[0]],1});
                 }
